@@ -27,35 +27,34 @@ namespace MobileWizard
         {
             InitializeComponent();
         }
+        private void _pause(int value)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            while (sw.ElapsedMilliseconds < value)
+                System.Windows.Forms.Application.DoEvents();
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             List<string> listCommands = new List<string>();
-            listCommands.Add("cd c:/adb/screenshots");
-             listCommands.Add("/T 0.4");
-            listCommands.Add("Set sum=0");
-             listCommands.Add("/T 0.4");
-            listCommands.Add("For %%A in (*.*) Do Set /a sum=sum+1");
-             listCommands.Add("/T 0.4");
-            listCommands.Add("cd c:/adb");
-             listCommands.Add("/T 0.4");
-            listCommands.Add("adb shell screencap -p /sdcard/screen%sum%.png");
-             listCommands.Add("/T 0.4");
-            listCommands.Add("adb pull /sdcard/screen%sum%.png c:/adb/Screenshots");
-             listCommands.Add("/T 0.4");
-            listCommands.Add("adb shell rm /sdcard/screen%sum%.png");
-             listCommands.Add("/T 0.4");
-            listCommands.Add("set sum=0");
-             listCommands.Add("/T 0.4");
-            File.WriteAllLines("temp.bat", listCommands);
-            Process screenProcess = new Process();
-                screenProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                screenProcess.StartInfo.FileName = "temp.bat";
-                screenProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            int numberScreen = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.png").Length+1;
+            listCommands.Add("shell screencap -p /sdcard/screen" + numberScreen.ToString()+".png");
+            listCommands.Add("pull /sdcard/screen" + numberScreen.ToString() + ".png "+Directory.GetCurrentDirectory());
+            listCommands.Add("shell rm /sdcard/screen" + numberScreen.ToString() + ".png");
+            foreach (string str in listCommands)
+            {
+                Process screenProcess = new Process();
+                screenProcess.StartInfo.FileName = "adb.exe";
+                screenProcess.StartInfo.Arguments = str;
                 screenProcess.StartInfo.CreateNoWindow = true;
-            screenProcess.Start();
-            listCommands.Clear();
-            //File.Delete("temp.bat");
+                screenProcess.StartInfo.UseShellExecute = false;
+                screenProcess.StartInfo.RedirectStandardInput = true;
+                screenProcess.StartInfo.RedirectStandardOutput = true;
+                screenProcess.StartInfo.RedirectStandardError = true;
+                screenProcess.Start();
+                _pause(4000);
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

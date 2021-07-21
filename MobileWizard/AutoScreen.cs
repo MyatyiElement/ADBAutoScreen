@@ -80,11 +80,8 @@ namespace MobileWizard
                         while (!isWorked)
                         {
                             listCommands.Add(@"shell screencap -p /sdcard/screen" + numberScreen.ToString() + ".png");
-                            // listCommands.Add("/T 0.4");
                             listCommands.Add(@"pull /sdcard/screen" + numberScreen.ToString() + ".png " + rootpath + "/" + numberCatalog.ToString());
-                            //listCommands.Add("/T 0.4");
                             listCommands.Add(@"shell rm /sdcard/screen" + numberScreen.ToString() + ".png");
-                            // listCommands.Add("/T 0.4");
                             if (numberScreen > 2)
                             {
                                 try
@@ -105,17 +102,14 @@ namespace MobileWizard
                             if (radioButton1.Checked) //down
                             {
                                 listCommands.Add(@"shell input swipe 300 1000 300 " + (1000 - int.Parse(textBox1.Text)).ToString());
-                                // listCommands.Add("/T 0.4");
                             };
                             if (radioButton2.Checked) //up
                             {
                                 listCommands.Add(@"shell input swipe 300 300 300 " + (300 + int.Parse(textBox1.Text)).ToString());
-                                // listCommands.Add("/T 0.4");
                             }
                             foreach (string str in listCommands)
                             {
                                 Process screenProcess = new Process();
-                                //screenProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                                 screenProcess.StartInfo.FileName = "adb.exe";
                                 screenProcess.StartInfo.Arguments = str;
                                 screenProcess.StartInfo.CreateNoWindow = true;
