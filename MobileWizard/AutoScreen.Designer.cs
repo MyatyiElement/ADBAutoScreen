@@ -35,6 +35,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonStartScreen = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.saveTextBox = new System.Windows.Forms.TextBox();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -105,11 +108,31 @@
             this.checkBox1.Text = "Автоопределение конца переписки";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // saveTextBox
+            // 
+            this.saveTextBox.Location = new System.Drawing.Point(12, 117);
+            this.saveTextBox.Name = "saveTextBox";
+            this.saveTextBox.Size = new System.Drawing.Size(169, 20);
+            this.saveTextBox.TabIndex = 7;
+            this.saveTextBox.Text = "C:\\adb\\screenshots\\auto\\";
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(196, 117);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 20);
+            this.saveButton.TabIndex = 8;
+            this.saveButton.Text = "Обзор";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
             // AutoScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(293, 121);
+            this.ClientSize = new System.Drawing.Size(288, 149);
+            this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.saveTextBox);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.buttonStartScreen);
             this.Controls.Add(this.textBox1);
@@ -136,5 +159,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonStartScreen;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox saveTextBox;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
