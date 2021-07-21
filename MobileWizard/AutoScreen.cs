@@ -91,12 +91,12 @@ namespace MobileWizard
                             isSucsess = false;
                         };
                     };
-                    if (radioButton1.Checked)
+                    if (radioButton1.Checked) //down
                     {
                         listCommands.Add("adb shell input swipe 300 1000 300 " + (1000 - int.Parse(textBox1.Text)).ToString());
                         listCommands.Add("/T 0.4");
                     };
-                    if (radioButton2.Checked)
+                    if (radioButton2.Checked) //up
                     {
                         listCommands.Add("adb shell input swipe 300 300 300 " + (300 + int.Parse(textBox1.Text)).ToString());
                         listCommands.Add("/T 0.4");
