@@ -5,12 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MobileWizard"
         mc:Ignorable="d"
-        Title="Main Menu" Height="331.146" Width="182.811" ResizeMode="NoResize">
-    <Grid Margin="0,0,2,0">
-        <Button Content="Auto Screen" HorizontalAlignment="Left" Margin="20,100,0,0" VerticalAlignment="Top" Width="133" Height="35" Click="Button_Click_2"/>
-        <Button Content="Backup" HorizontalAlignment="Left" Margin="20,100,0,0" VerticalAlignment="Top" Width="133" Height="35" Click="Button_Click_1"/>
-        <Button Content="Single Screen" HorizontalAlignment="Left" Height="35" Margin="20,60,0,0" VerticalAlignment="Top" Width="133" Click="Button_Click"/>
-        <Button Content="Exit" HorizontalAlignment="Left" Height="35" Margin="20,237,0,0" VerticalAlignment="Top" Width="133" Click="Button_Click_3"/>
-        <Button Content="AutoScreen" HorizontalAlignment="Left" Height="35" Margin="20,20,0,0" VerticalAlignment="Top" Width="133" Click="Button_Click_4"/>
+        Title="Main Menu" Height="235.161" Width="422.772" ResizeMode="NoResize">
+    <Grid Margin="0,0,2,-19" Height="216" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="353*"/>
+            <ColumnDefinition Width="62*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Single Screen" HorizontalAlignment="Left" Height="35" Margin="20,60,0,0" VerticalAlignment="Top" Width="371" Click="Button_Click" Grid.ColumnSpan="2"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Height="35" Margin="20,149,0,0" VerticalAlignment="Top" Width="371" Click="Button_Click_3" Grid.ColumnSpan="2"/>
+        <Button Content="AutoScreen" HorizontalAlignment="Left" Height="35" Margin="20,20,0,0" VerticalAlignment="Top" Width="371" Click="Button_Click_4" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="20" Margin="20,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="284"/>
+        <Label x:Name="label" Content="Место сохранения одиночных снимков:" HorizontalAlignment="Left" Height="26" Margin="20,95,0,0" VerticalAlignment="Top" Width="284"/>
+        <Label x:Name="label1" Content="" HorizontalAlignment="Left" Margin="20,118,0,0" VerticalAlignment="Top" Width="133"/>
+        <Button Content="Обзор" HorizontalAlignment="Left" Height="20" Margin="309,121,0,0" VerticalAlignment="Top" Width="82" Grid.ColumnSpan="2" Click="Button_Click_5"/>
     </Grid>
 </Window>

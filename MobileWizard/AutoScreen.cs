@@ -65,7 +65,7 @@ namespace MobileWizard
                     _pause(1000);
                     string answerDevice;
                     answerDevice = deviceProcess.StandardOutput.ReadToEnd();
-                    MessageBox.Show(answerDevice.Substring(answerDevice.Length - 10));
+                    //MessageBox.Show(answerDevice.Substring(answerDevice.Length - 10));
                     if (answerDevice.Substring(answerDevice.Length - 10).Trim() == "device")
                     {
                         buttonStartScreen.Text = "Прервать";
@@ -118,7 +118,7 @@ namespace MobileWizard
                                 screenProcess.StartInfo.RedirectStandardOutput = true;
                                 screenProcess.StartInfo.RedirectStandardError = true;
                                 screenProcess.Start();
-                                _pause(1000);
+                                _pause(1500);
                             }
                             listCommands.Clear();
                             numberScreen += 1;

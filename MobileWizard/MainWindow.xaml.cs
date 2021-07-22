@@ -26,6 +26,7 @@ namespace MobileWizard
         public MainWindow()
         {
             InitializeComponent();
+            textBox.Text = Directory.GetCurrentDirectory();
         }
         private void _pause(int value)
         {
@@ -38,9 +39,9 @@ namespace MobileWizard
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             List<string> listCommands = new List<string>();
-            int numberScreen = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.png").Length+1;
+            int numberScreen = Directory.GetFiles(textBox.Text, "*.png").Length+1;
             listCommands.Add("shell screencap -p /sdcard/screen" + numberScreen.ToString()+".png");
-            listCommands.Add("pull /sdcard/screen" + numberScreen.ToString() + ".png "+Directory.GetCurrentDirectory());
+            listCommands.Add("pull /sdcard/screen" + numberScreen.ToString() + ".png "+textBox.Text);
             listCommands.Add("shell rm /sdcard/screen" + numberScreen.ToString() + ".png");
             foreach (string str in listCommands)
             {
@@ -53,7 +54,7 @@ namespace MobileWizard
                 screenProcess.StartInfo.RedirectStandardOutput = true;
                 screenProcess.StartInfo.RedirectStandardError = true;
                 screenProcess.Start();
-                _pause(4000);
+                _pause(1500);
             }
         }
 
@@ -84,6 +85,15 @@ namespace MobileWizard
         {
             AutoScreen auts = new AutoScreen();
             auts.ShowDialog();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog openFileDlg = new System.Windows.Forms.FolderBrowserDialog();
+            if (openFileDlg.ShowDialog().ToString() == "OK")
+            {
+                textBox.Text = openFileDlg.SelectedPath;
+            }
         }
     }
 }
