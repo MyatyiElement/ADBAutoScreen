@@ -26,7 +26,10 @@ namespace MobileWizard
         public MainWindow()
         {
             InitializeComponent();
-            textBox.Text = Directory.GetCurrentDirectory();
+            
+            if (Properties.Settings.Default.singlePath != "") { textBox.Text = Properties.Settings.Default.singlePath; }
+            else { textBox.Text = Directory.GetCurrentDirectory(); }
+
         }
         private void _pause(int value)
         {
@@ -90,9 +93,12 @@ namespace MobileWizard
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog openFileDlg = new System.Windows.Forms.FolderBrowserDialog();
+            openFileDlg.SelectedPath = textBox.Text;
             if (openFileDlg.ShowDialog().ToString() == "OK")
             {
                 textBox.Text = openFileDlg.SelectedPath;
+                Properties.Settings.Default.singlePath = textBox.Text;
+                Properties.Settings.Default.Save();
             }
         }
     }

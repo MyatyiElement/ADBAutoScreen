@@ -18,6 +18,8 @@ namespace MobileWizard
         public AutoScreen()
         {
             InitializeComponent();
+            if (Properties.Settings.Default.autoPath != "") { saveTextBox.Text = Properties.Settings.Default.autoPath; }
+            else { saveTextBox.Text = Properties.Settings.Default.singlePath; }
         }
 
         public int numberCatalog = 0;
@@ -144,9 +146,12 @@ namespace MobileWizard
         }
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            folderBrowserDialog1.SelectedPath = saveTextBox.Text;
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 saveTextBox.Text = folderBrowserDialog1.SelectedPath;
+                Properties.Settings.Default.autoPath = saveTextBox.Text;
+                Properties.Settings.Default.Save();
             }
         }
     }
