@@ -44,7 +44,7 @@ namespace MobileWizard
             List<string> listCommands = new List<string>();
             int numberScreen = Directory.GetFiles(textBox.Text, "*.png").Length+1;
             listCommands.Add("shell screencap -p /sdcard/screen" + numberScreen.ToString()+".png");
-            listCommands.Add("pull /sdcard/screen" + numberScreen.ToString() + ".png "+textBox.Text);
+            listCommands.Add("pull /sdcard/screen" + numberScreen.ToString() + ".png "+ '\u0022' + textBox.Text + '\u0022');
             listCommands.Add("shell rm /sdcard/screen" + numberScreen.ToString() + ".png");
             foreach (string str in listCommands)
             {
