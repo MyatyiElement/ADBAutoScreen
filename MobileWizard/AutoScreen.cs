@@ -82,7 +82,7 @@ namespace MobileWizard
                         while (!isWorked)
                         {
                             listCommands.Add(@"shell screencap -p /sdcard/screen" + numberScreen.ToString() + ".png");
-                            listCommands.Add(@"pull /sdcard/screen" + numberScreen.ToString() + ".png " + rootpath + "/" + numberCatalog.ToString());
+                            listCommands.Add(@"pull /sdcard/screen" + numberScreen.ToString() + ".png " + '\u0022' + path + '\u0022');
                             listCommands.Add(@"shell rm /sdcard/screen" + numberScreen.ToString() + ".png");
                             if (numberScreen > 2)
                             {
